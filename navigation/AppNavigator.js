@@ -7,10 +7,12 @@ import list from '../screens/list'
 import details from '../screens/details'
 import login from '../screens/login'
 import cart from  '../screens/cart'
+import dashboard from '../screens/dashboard'
 const HomeStack = createStackNavigator({
   //Home: dashboard,
   Home: login,
   loginScreen:{screen: login},
+  dashScreen:{screen: dashboard},
   detailsScreen: {screen: details},
   listScreen: {screen: list},
   cartScreen:{screen: cart}
