@@ -11,7 +11,12 @@ import {
 } from 'react-native';
 
 export default class Users extends Component {
-
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: 'dashScreen',
+      backgroundColor: '#13783a',
+    }
+}
   constructor(props) {
     super(props);
     this.state = {
@@ -30,8 +35,8 @@ export default class Users extends Component {
     };
   }
 
-  clickEventListener(item) {
-    Alert.alert(item.name)
+  clickEventListener() {
+    this.props.navigation.navigate('listScreen');
   }
 
   render() {
@@ -47,7 +52,7 @@ export default class Users extends Component {
           }}
           renderItem={({item}) => {
             return (
-              <TouchableOpacity style={styles.card} onPress={() => {this.clickEventListener(item)}}>
+              <TouchableOpacity style={styles.card} onPress={() => {this.clickEventListener()}}>
                 <View style={styles.cardHeader}>
                   <Image style={styles.icon} source={{uri:"https://img.icons8.com/flat_round/64/000000/hearts.png"}}/>
                 </View>
@@ -56,9 +61,6 @@ export default class Users extends Component {
                   <View style={{alignItems:"center", justifyContent:"center"}}>
                     <Text style={styles.name}>{item.name}</Text>
                     <Text style={styles.position}>{item.position}</Text>
-                    <TouchableOpacity style={styles.followButton} onPress={()=> this.clickEventListener(item)}>
-                      <Text style={styles.followButtonText}>Follow</Text>  
-                    </TouchableOpacity>
                   </View>
                 </View>
               </TouchableOpacity>
